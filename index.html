@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Evaluasi Sistem Persamaan Linear Tiga Variabel (SPLTV) Kelas X</title>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fa;
+    color: #222;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background: #0078d7;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  main {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  button {
+    background: #0078d7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #005a9e;
+  }
+
+  .hidden { display: none; }
+
+  .question {
+    margin-bottom: 20px;
+  }
+
+  input[type="radio"] {
+    margin-right: 8px;
+  }
+
+  #result {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #0078d7;
+  }
+</style>
+</head>
+
+<body>
+<header>
+  <h1>Evaluasi Sistem Persamaan Linear Tiga Variabel (SPLTV)</h1>
+  <p><em>Disusun oleh: Lina Diah Pangestu</em></p>
+</header>
+
+<main>
+  <section id="intro">
+    <h2>Petunjuk Pengerjaan</h2>
+    <p>Jawablah setiap soal dengan memilih salah satu jawaban yang paling tepat. Tekan tombol <b>Mulai Evaluasi</b> untuk memulai.</p>
+    <button onclick="startTest()">Mulai Evaluasi</button>
+  </section>
+
+  <section id="quiz" class="hidden"></section>
+
+  <section id="result" class="hidden"></section>
+</main>
+
+<script>
+const quizData = [
+  {
+    question: "1. Bentuk umum SPLTV terdiri dari berapa persamaan?",
+    a: "1 persamaan",
+    b: "2 persamaan",
+    c: "3 persamaan",
+    d: "4 persamaan",
+    correct: "c"
+  },
+  {
+    question: "2. Metode substitusi dilakukan dengan cara ...",
+    a: "Mengalikan semua persamaan",
+    b: "Menggantikan salah satu variabel dari persamaan lain",
+    c: "Menjumlahkan semua persamaan",
+    d: "Menyamakan semua koefisien",
+    correct: "b"
+  },
+  {
+    question: "3. Hasil dari sistem: x + y + z = 6, x - y + z = 2, dan x + y - z = 4 adalah nilai x = ...",
+    a: "1",
+    b: "2",
+    c: "3",
+    d: "4",
+    correct: "b"
+  },
+  {
+    question: "4. Jika x = 2, y = 1, z = 3 maka nilai dari 2x + y − z adalah ...",
+    a: "2",
+    b: "3",
+    c: "4",
+    d: "2",
+    correct: "b"
+  },
+  {
+    question: "5. SPLTV disebut memiliki solusi unik jika ...",
+    a: "Semua koefisien sama",
+    b: "Ketiga garis berpotongan di satu titik",
+    c: "Tidak ada titik potong",
+    d: "Salah satu persamaan identik",
+    correct: "b"
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function startTest() {
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  showQuestion();
+}
+
+function showQuestion() {
+  const quizContainer = document.getElementById("quiz");
+  const q = quizData[currentQuestion];
+
+  quizContainer.innerHTML = `
+    <div class="question">
+      <h3>${q.question}</h3>
+      <label><input type="radio" name="answer" value="a"> ${q.a}</label><br>
+      <label><input type="radio" name="answer" value="b"> ${q.b}</label><br>
+      <label><input type="radio" name="answer" value="c"> ${q.c}</label><br>
+      <label><input type="radio" name="answer" value="d"> ${q.d}</label><br>
+    </div>
+    <button onclick="nextQuestion()">Selanjutnya</button>
+  `;
+}
+
+function nextQuestion() {
+  const answer = document.querySelector('input[name="answer"]:checked');
+  if (!answer) {
+    alert("Pilih salah satu jawaban sebelum lanjut!");
+    return;
+  }
+
+  if (answer.value === quizData[currentQuestion].correct) {
+    score++;
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < quizData.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById("quiz").classList.add("hidden");
+  const resultContainer = document.getElementById("result");
+  resultContainer.classList.remove("hidden");
+  resultContainer.innerHTML = `
+    <h2>Hasil Evaluasi</h2>
+    <p>Skor kamu: ${score} dari ${quizData.length}</p>
+    <button onclick="location.reload()">Ulangi Tes</button>
+  `;
+}
+</script>
+</body>
+</html>
