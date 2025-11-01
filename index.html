@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Evaluasi Sistem Persamaan Linear Tiga Variabel (SPLTV) Kelas X</title>
-<p><em>Disusun oleh: Lina Diah Pangestu</em></p>
 <style>
 body {
   font-family: "Segoe UI", sans-serif;
@@ -80,7 +79,7 @@ button:hover { background: #4b86b4; }
     <p>Masukkan data diri:</p>
     <label>Nama: <input type="text" id="studentName" required></label><br><br>
     <label>Kelas: <input type="text" id="studentClass" required></label><br><br>
-    <button onclick="startTest()">Mulai Evaluasi</button>
+    <button type = "button" onclick="startTest()">Mulai Evaluasi</button>
   </div>
 
   <div id="quizSection" class="hidden"></div>
@@ -88,8 +87,8 @@ button:hover { background: #4b86b4; }
   <div id="resultSection" class="hidden">
     <h2>Hasil Evaluasi</h2>
     <div id="summary"></div>
-    <button onclick="printSummary()">Cetak Hasil</button>
-    <button onclick="restartTest()">Mulai Ulang</button>
+    <button type = "button" onclick="printSummary()">Cetak Hasil</button>
+    <button type = "button" onclick="restartTest()">Mulai Ulang</button>
   </div>
 </div>
 
@@ -113,7 +112,6 @@ options:[
 ],
 answer:4,
 cat:"Perhitungan",
-  
 fb_true:"✅ Tepat — hasilnya (x, y, z) = (−5, 3, 1).<br><br>
 <b>Langkah pengerjaan:</b><br>
 1️⃣ Dari persamaan (3): 6y − 4z = 14 → 3y − 2z = 7.<br><br>
